@@ -23,7 +23,8 @@ SELECT * FROM cars WHERE price BETWEEN 15000 AND 30000;
 UPDATE cars SET price = price * 1.10 WHERE year < 2015;
 
 -- 9. Delete Old Cars:
-DELETE FROM cars WHERE year < (EXTRACT(YEAR FROM CURRENT_DATE) - 10);
+DELETE FROM cars 
+WHERE year < (strftime('%Y', 'now') - 10);
 
 -- 10. Complex Query:
 SELECT name, model, MAX(price) AS max_price
