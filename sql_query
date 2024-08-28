@@ -1,0 +1,37 @@
+-- 1. Retrieve All Cars:
+SELECT * FROM cars;
+
+-- 2. Search by Year:
+SELECT * FROM cars WHERE year = 2018;
+
+-- 3. Find Expensive Cars:
+SELECT * FROM cars WHERE price > 20000;
+
+-- 4. Count Cars by Name:
+SELECT name, COUNT(*) AS count FROM cars GROUP BY name;
+
+-- 5. Average Price by Year:
+SELECT year, AVG(price) AS average_price FROM cars GROUP BY year;
+
+-- 6. Find the Most Expensive Car:
+SELECT * FROM cars ORDER BY price DESC LIMIT 1;
+
+-- 7. Cars within Price Range:
+SELECT * FROM cars WHERE price BETWEEN 15000 AND 30000;
+
+-- 8. Update Car Price:
+UPDATE cars SET price = price * 1.10 WHERE year < 2015;
+
+-- 9. Delete Old Cars:
+DELETE FROM cars WHERE year < (EXTRACT(YEAR FROM CURRENT_DATE) - 10);
+
+-- 10. Complex Query:
+SELECT name, model, MAX(price) AS max_price
+FROM cars
+GROUP BY year, name, model;
+
+-- 11. Complex Query 2:
+SELECT name, AVG(price) AS average_price
+FROM cars
+GROUP BY name
+HAVING COUNT(*) > 3;
